@@ -1,13 +1,14 @@
 """
-This routine will cremove any dubplicate lines by disccarding any lines that are older than other lines
+This routine will cremove any duplicate lines by disccarding any lines that are older than other lines
+The routine takes all the files in the provided directory, cleans them, and places them in a new "clean" directory.
 """
 # ----------------------------------- IMPORTS --------------------------------------#
 import os
 import datetime
 import pandas as pd
 # ----------------------------------------------------------------------------------#
-home_dir = '/home/carterrhea/Documents/CAM-proj'
-clean_dir = '/home/carterrhea/Documents/CAM-proj/Clean/'
+home_dir = '/home/carterrhea/Documents/CAM-proj'  # Directory containing CAM infomation
+clean_dir = '/home/carterrhea/Documents/CAM-proj/Clean/'  # Directory to be made containing clean CAMS
 # ----------------------------------------------------------------------------------#
 
 
@@ -60,4 +61,3 @@ for filename in os.listdir(os.getcwd()):  # Step through files
         df = pd.read_csv(filename)
         df = df[df['title'] != '']  # Drop empty blocks
         df.to_csv(clean_dir+filename, index = False, header=True)
-
